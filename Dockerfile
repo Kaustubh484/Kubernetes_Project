@@ -9,5 +9,5 @@ RUN (npm run start&)
 WORKDIR /home/app/server
 RUN npm install
 CMD [ "node","index.js" ]
-EXPOSE 3000 22
+EXPOSE 3000 22 8080
 
