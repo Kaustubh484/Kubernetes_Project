@@ -1,13 +1,12 @@
-FROM node:18-alpine
- 
+FROM  centos:latest
 
-RUN mkdir -p /home/app
-COPY ./APP /home/app
-RUN npm install --prefix /home/app/client
-RUN cd /home/app/client
-RUN (npm run start&)
-WORKDIR /home/app/server
-RUN npm install
-CMD [ "node","index.js" ]
-EXPOSE 3000 22 8080 8081
-
+RUN yum install -y httpd \
+ zip\
+ unzip
+ADD https://www.free-css.com/assets/files/free-css-templates/download/page254/photogenic.zip /var/www/html/
+WORKDIR /var/www/html/
+RUN unzip photogenic.zip
+RUN cp -rvf photogenic/* .
+RUN rm -rf photogenic photogenic.zip
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+EXPOSE 80 22
