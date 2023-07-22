@@ -1,11 +1,7 @@
 - hosts: all
   become: true
-  tasks: 
-     - name: delete old deployment
-       command: kubectl delete -f /home/didu/pro/Deployment.yml
-     - name: delete old service
-       command: kubectl delete -f /home/didu/pro/Service.yml
-     - name: create new deployment
-       command: kubectl apply -f /home/didu/pro/Deployment.yml
-     - name: create new service
-       command: kubectl apply -f /home/didu/pro/Service.yml
+  tasks:
+    - name: create new deployment
+      command: kubectl apply -f /home/didu/pro/Deployment.yml
+    - name: create new service
+      command: kubectl apply -f /home/didu/pro/Service.yml
